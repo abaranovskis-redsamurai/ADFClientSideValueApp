@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="main.jsf" id="d1">
+        <af:resource type="javascript">
+            function passClientSideValue(clientId) {
+                var comp = AdfPage.PAGE.findComponentByAbsoluteId(clientId);
+                document.getElementById('ot1').innerHTML = comp.getValue();
+            }
+        </af:resource>
+        <af:form id="f1">
+            <af:panelFormLayout id="pfl1" partialTriggers="b1">
+                <af:inputText label="Input" id="it1" value="#{pageFlowScope.inputValue}" autoSubmit="true"
+                              valueChangeListener="#{backingBeanScope.MainBean.handleValueChange}"/>
+                <af:panelLabelAndMessage label="Output" id="plam1">
+                    <af:panelGroupLayout id="pgl1">
+                        <div id="ot1">
+                        </div>
+                    </af:panelGroupLayout>
+                </af:panelLabelAndMessage>
+            </af:panelFormLayout>
+        </af:form>
+    </af:document>
+</f:view>
